@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+    <ApplicationIcon>shadow-copy-manager-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="shadow-copy-manager-icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ILRepack" Version="2.0.34">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Management" Version="8.0.0" />
+  </ItemGroup>
+
+<ItemGroup>
+  <Content Update="clretwrc.dll">
+    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+  </Content>
+</ItemGroup>
+
+
+  <Target Name="GetAssmeblyVersion" AfterTargets="Build">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="Assembly" />
+    </GetAssemblyIdentity>
+  </Target>
+  <PropertyGroup>
+    <DistDirectory>$(MSBuildThisFileDirectory)\dist</DistDirectory>
+    <DistDirectoryTemp>$(DistDirectory)\temp</DistDirectoryTemp>
+  </PropertyGroup>
+  <Target Name="Makedist" AfterTargets="Build" Condition="$(Configuration) == 'Release'">
+    <RemoveDir Directories="$(DistDirectoryTemp)" />
+    <MakeDir Directories="$(DistDirectoryTemp)" />
+    <Copy SourceFiles="$(OutputPath)\publish\$(AssemblyName).exe" DestinationFolder="$(DistDirectoryTemp)" />
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="MyAssemblyIdentities" />
+    </GetAssemblyIdentity>
+    <ZipDirectory SourceDirectory="$(DistDirectoryTemp)" Overwrite="true" DestinationFile="$(DistDirectory)\$(AssemblyName)-%(MyAssemblyIdentities.Version).zip" />
+  </Target>
+
+
+</Project>

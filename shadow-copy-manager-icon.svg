@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="#4a90e2" />
+  
+  <!-- Hard drive shape -->
+  <rect x="25" y="30" width="50" height="40" rx="5" ry="5" fill="#ffffff" />
+  
+  <!-- Drive platters -->
+  <circle cx="50" cy="50" r="15" fill="#4a90e2" stroke="#ffffff" stroke-width="2" />
+  <circle cx="50" cy="50" r="7" fill="#ffffff" />
+  
+  <!-- Shadow copy representation -->
+  <path d="M75 50 A25 25 0 0 1 50 75" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+  <circle cx="75" cy="50" r="3" fill="#ffffff" />
+  <circle cx="50" cy="75" r="3" fill="#ffffff" />
+</svg>
