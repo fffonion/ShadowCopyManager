@@ -38,8 +38,9 @@
   <PropertyGroup>
     <DistDirectory>$(MSBuildThisFileDirectory)\dist</DistDirectory>
     <DistDirectoryTemp>$(DistDirectory)\temp</DistDirectoryTemp>
+    <Version>1.0.1</Version>
   </PropertyGroup>
-  <Target Name="Makedist" AfterTargets="Build" Condition="$(Configuration) == 'Release'">
+  <Target Name="Makedist" AfterTargets="Publish" Condition="$(Configuration) == 'Release'">
     <RemoveDir Directories="$(DistDirectoryTemp)" />
     <MakeDir Directories="$(DistDirectoryTemp)" />
     <Copy SourceFiles="$(OutputPath)\publish\$(AssemblyName).exe" DestinationFolder="$(DistDirectoryTemp)" />
