@@ -98,7 +98,7 @@ namespace ShadowCopyManager
 
                 if ((uint)result["ReturnValue"] == 0)
                 {
-                    MessageBox.Show("Shadow copy created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("Shadow copy created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RefreshShadowCopiesList();
                 }
                 else
@@ -258,7 +258,7 @@ namespace ShadowCopyManager
                         try
                         {
                             await DeleteShadowCopy(shadowCopyId);
-                            MessageBox.Show("Shadow copy deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //MessageBox.Show("Shadow copy deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             RefreshShadowCopiesList();
                         }
                         catch (Exception ex)
