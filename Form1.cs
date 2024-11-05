@@ -311,6 +311,7 @@ namespace ShadowCopyManager
 
             try
             {
+                VssTool.EnableUNCPathFor($@"\\{originatingMachine}\{driveLetter}$");
                 LaunchExplorerAsUser(path);
             }
             catch (Exception ex)
