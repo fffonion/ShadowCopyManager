@@ -31,4 +31,4 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          dist/ShadowCopyManager-${{ github.ref }}.zip
+          dist/ShadowCopyManager*.zip
